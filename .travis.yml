@@ -119,13 +119,12 @@ install:
         # Download and Compile libgeos
         if [[ $BUILD_LIBGEOS == 'internal' ]]; then
           echo 'Building internal libgeos'
-          cd geos-3.3.3
+          cd geos
         # Does this string contain a "git" substring?
         elif [[ $BUILD_LIBGEOS == *"git"* ]]; then
           echo 'Using git to download libgeos development'
           git clone ${BUILD_LIBGEOS}
           cd libgeos
-          ./autogen.sh
           # do NOT cache libgeos git
           export GEOS_DIR=$HOME/dont-cache-me/
         else
@@ -133,8 +132,8 @@ install:
           wget https://github.com/libgeos/libgeos/archive/${BUILD_LIBGEOS}.tar.gz
           tar zxf ${BUILD_LIBGEOS}.tar.gz
           cd libgeos-${BUILD_LIBGEOS}
-          ./autogen.sh
         fi
+        ./autogen.sh
         ./configure --prefix=$GEOS_DIR
         make; make install
         cd ..
