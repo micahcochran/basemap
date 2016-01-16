@@ -145,5 +145,5 @@ install:
 
 script:
     - python lib/mpl_toolkits/basemap/test.py --verbose
-
+    - python examples/test_images.py --verbose
 

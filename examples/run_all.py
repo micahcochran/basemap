@@ -1,6 +1,7 @@
 import glob, os, sys
 test_files = glob.glob('*.py')
 test_files.remove('run_all.py')
+test_files.remove('test_images.py')  # unit tests
 test_files.remove('allskymap.py')
 test_files.remove('fcstmaps.py')
 test_files.remove('fcstmaps_axesgrid.py')
