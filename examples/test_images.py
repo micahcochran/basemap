@@ -70,7 +70,7 @@ class TestImageComparisonsExamples(unittest.TestCase):
           
         for image_name in image_names:
             results = compare_images('unittest_images/' + image_name, 
-                                    image_name, 0.001)
+                                    image_name, 10)
         
             if results is not None:
                 raise RuntimeError(results)
