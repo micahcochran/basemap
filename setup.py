@@ -115,10 +115,19 @@ requirements = [
   "pyshp >= 1.2.0"
 ]
 
-__version__ = "1.0.8"
+# retreive basemap version information (stored in __init__.py) in the
+# __version__ variable (approach taken from Fiona)
+with open('lib/mpl_toolkits/basemap/__init__.py', 'r') as f:
+    for line in f:
+        idx = line.find('__version__')
+        if  idx >= 0 and line[idx:].find('=') > 0:
+            # parse __version__ and remove surrounding quotes
+            version = line.split('=')[1].strip()[1:-1]
+            break
+        
 setup(
   name              = "basemap",
-  version           = __version__,
+  version           = version,
   description       = "Plot data on map projections with matplotlib",
   long_description  = """
   An add-on toolkit for matplotlib that lets you plot data
