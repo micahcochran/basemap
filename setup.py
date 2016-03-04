@@ -135,7 +135,7 @@ setup(
   See http://www.scipy.org/wikis/topical_software/Maps for an
   example of what it can do.""",
   url               = "http://matplotlib.sourceforge.net/toolkits.html",
-  download_url      = "https://downloads.sourceforge.net/project/matplotlib/matplotlib-toolkits/basemap-{0}/basemap-{0}.tar.gz".format(__version__),
+  download_url      = "https://downloads.sourceforge.net/project/matplotlib/matplotlib-toolkits/basemap-{0}/basemap-{0}.tar.gz".format(version),
   author            = "Jeff Whitaker",
   author_email      = "jeffrey.s.whitaker@noaa.gov",
   install_requires  = requirements,
