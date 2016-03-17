@@ -108,6 +108,16 @@ datafiles = glob.glob(os.path.join(pathout,'*'))
 datafiles = [os.path.join('data',os.path.basename(f)) for f in datafiles]
 package_data = {'mpl_toolkits.basemap':datafiles}
 
+# retrieve basemap version information (stored in __init__.py) in the
+# __version__ variable (approach taken from Fiona)
+with open('lib/mpl_toolkits/basemap/__init__.py', 'r') as f:
+    for line in f:
+        idx = line.find('__version__')
+        if  idx >= 0 and line[idx:].find('=') >= 0:
+            # parse __version__ and remove surrounding quotes
+            version = line.split('=')[1].strip()[1:-1]
+            break
+
 requirements = [
   "numpy>=1.2.1", 
   "matplotlib>=1.0.0",
@@ -115,10 +125,9 @@ requirements = [
   "pyshp >= 1.2.0"
 ]
 
-__version__ = "1.0.8"
 setup(
   name              = "basemap",
-  version           = __version__,
+  version           = version,
   description       = "Plot data on map projections with matplotlib",
   long_description  = """
   An add-on toolkit for matplotlib that lets you plot data
